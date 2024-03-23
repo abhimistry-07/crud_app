@@ -1,0 +1,16 @@
+.formContainer {
+    width: 30%;
+    
+}
+
+.tableContainer {
+    width: 70%;
+
+    table {
+        width: 100%;
+    }
+
+    tr {
+        text-align: center;
+    }
+}

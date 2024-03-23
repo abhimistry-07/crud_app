@@ -1,49 +1,57 @@
-<form action="" [formGroup]="addProductForm" (ngSubmit)="onSubmitForm()">
-  <h1>{{ showUpdateBtn ? "Update Product" : "Add Product" }}</h1>
-  <label
-    >Product Name:-
-    <input
-      type="text"
-      formControlName="productName"
-      placeholder="Add Product Name"
-    />
-  </label>
-  <br /><br />
-  <label
-    >Description:-
-    <input
-      type="text"
-      formControlName="discription"
-      placeholder="Add Discription"
-    />
-  </label>
-  <br /><br />
-  <label
-    >Price:-
-    <input type="number" formControlName="price" placeholder="Add Price" />
-  </label>
-  <br /><br />
-  <button type="submit" *ngIf="!showUpdateBtn">Add Product</button>
-  <button type="submit" *ngIf="showUpdateBtn">Update Product</button>
-</form>
-
-<table>
-  <thead>
-    <tr>
-      <th>Product Name</th>
-      <th>Discription</th>
-      <th>Price</th>
-      <th>Update</th>
-      <th>Delete</th>
-    </tr>
-  </thead>
-  <tbody *ngFor="let product of allProducts">
-    <tr>
-      <td>{{ product.productName }}</td>
-      <td>{{ product.discription }}</td>
-      <td>{{ product.price }}</td>
-      <td><button (click)="handleUpdateForm(product)">Update</button></td>
-      <td><button (click)="handleDelete(product._id)">Delete</button></td>
-    </tr>
-  </tbody>
-</table>
+<div style="display: flex; gap: 15px">
+  <form
+    action=""
+    [formGroup]="addProductForm"
+    (ngSubmit)="onSubmitForm()"
+    class="formContainer"
+  >
+    <h1>{{ showUpdateBtn ? "Update Product" : "Add Product" }}</h1>
+    <label
+      >Product Name:-
+      <input
+        type="text"
+        formControlName="productName"
+        placeholder="Add Product Name"
+      />
+    </label>
+    <br /><br />
+    <label
+      >Description:-
+      <input
+        type="text"
+        formControlName="discription"
+        placeholder="Add Discription"
+      />
+    </label>
+    <br /><br />
+    <label
+      >Price:-
+      <input type="number" formControlName="price" placeholder="Add Price" />
+    </label>
+    <br /><br />
+    <button type="submit" *ngIf="!showUpdateBtn">Add Product</button>
+    <button type="submit" *ngIf="showUpdateBtn">Update Product</button>
+  </form>
+  <div class="tableContainer">
+    <table>
+      <thead>
+        <tr>
+          <th>Product Name</th>
+          <th>Discription</th>
+          <th>Price</th>
+          <th>Update</th>
+          <th>Delete</th>
+        </tr>
+      </thead>
+      <tbody *ngFor="let product of allProducts">
+        <tr>
+          <td>{{ product.productName }}</td>
+          <td>{{ product.discription }}</td>
+          <td>{{ product.price }}</td>
+          <td><button (click)="handleUpdateForm(product)">Update</button></td>
+          <td><button (click)="handleDelete(product._id)">Delete</button></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
