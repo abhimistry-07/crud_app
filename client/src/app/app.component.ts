@@ -13,7 +13,11 @@ export class AppComponent {
 
   url: string = '';
 
-  allProducts: any = []
+  allProducts: any = [];
+
+  showUpdateBtn: boolean = false;
+
+  idOfProductToUpdate: number = 0;
 
   ngOnInit() {
     this.url = environment.apiUrl;
@@ -27,8 +31,11 @@ export class AppComponent {
   });
 
   onSubmitForm() {
-    this.addNewProduct();
-    // console.log(this.addProductForm.value);
+    if (this.showUpdateBtn) {
+      this.updateProduct();
+    } else {
+      this.addNewProduct();
+    }
   }
 
   addNewProduct() {
@@ -60,7 +67,32 @@ export class AppComponent {
       alert('Product deleted successfully.')
       this.fetchProducts();
     }, (error) => {
+      console.log(error);
       alert('Something went wrong!')
     })
+  }
+
+  handleUpdateForm(product: any) {
+    this.addProductForm.setValue({
+      productName: product.productName,
+      discription: product.discription,
+      price: product.price
+    });
+    this.showUpdateBtn = true;
+    this.idOfProductToUpdate = product._id
+  }
+
+  updateProduct() {
+    let updatedProductData = this.addProductForm.value;
+
+    this.http.patch<any>(`${this.url}/evaluation/${this.idOfProductToUpdate}.json`, updatedProductData)
+      .subscribe(() => {
+        alert('Product updated successfully.')
+        this.fetchProducts();
+        this.addProductForm.reset();
+      }, (error) => {
+        console.log(error);
+        alert('Something went wrong!')
+      })
   }
 }

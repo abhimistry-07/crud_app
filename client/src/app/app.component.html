@@ -1,4 +1,5 @@
 <form action="" [formGroup]="addProductForm" (ngSubmit)="onSubmitForm()">
+  <h1>{{ showUpdateBtn ? "Update Product" : "Add Product" }}</h1>
   <label
     >Product Name:-
     <input
@@ -22,7 +23,8 @@
     <input type="number" formControlName="price" placeholder="Add Price" />
   </label>
   <br /><br />
-  <button type="submit">Add Product</button>
+  <button type="submit" *ngIf="!showUpdateBtn">Add Product</button>
+  <button type="submit" *ngIf="showUpdateBtn">Update Product</button>
 </form>
 
 <table>
@@ -40,7 +42,7 @@
       <td>{{ product.productName }}</td>
       <td>{{ product.discription }}</td>
       <td>{{ product.price }}</td>
-      <td><button>Update</button></td>
+      <td><button (click)="handleUpdateForm(product)">Update</button></td>
       <td><button (click)="handleDelete(product._id)">Delete</button></td>
     </tr>
   </tbody>
