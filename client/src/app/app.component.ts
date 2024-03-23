@@ -90,6 +90,7 @@ export class AppComponent {
         alert('Product updated successfully.')
         this.fetchProducts();
         this.addProductForm.reset();
+        this.showUpdateBtn = false;
       }, (error) => {
         console.log(error);
         alert('Something went wrong!')
