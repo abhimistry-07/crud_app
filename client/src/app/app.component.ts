@@ -17,6 +17,7 @@ export class AppComponent {
 
   ngOnInit() {
     this.url = environment.apiUrl;
+    this.fetchProducts();
   }
 
   addProductForm = new FormGroup({
@@ -35,10 +36,22 @@ export class AppComponent {
 
     this.http.post<any>(`${this.url}/evaluation.json`, product).subscribe((response) => {
       alert('Product added successfully!');
+      this.fetchProducts();
       this.addProductForm.reset();
     }, (error) => {
       console.log(error);
       alert('Something went wrong!')
+    })
+  }
+
+  fetchProducts() {
+    this.http.get<any>(`${this.url}/evaluation.json`).subscribe((response) => {
+      let products = Object.keys(response).map((key) => ({
+        _id: key.slice(0),
+        ...response[key]
+      }));
+      this.allProducts = products;
+      // console.log(this.allProducts);
     })
   }
 }
