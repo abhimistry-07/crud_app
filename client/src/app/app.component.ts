@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import { environment } from 'src/environment';
+// import { environment } from 'src/environment';
 
 @Component({
   selector: 'app-root',
@@ -20,7 +20,7 @@ export class AppComponent {
   idOfProductToUpdate: number = 0;
 
   ngOnInit() {
-    this.url = environment.apiUrl;
+    // this.url = environment.apiUrl;
     this.fetchProducts();
   }
 
