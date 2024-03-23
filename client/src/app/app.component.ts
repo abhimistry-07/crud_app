@@ -11,7 +11,7 @@ import { environment } from 'src/environment';
 export class AppComponent {
   constructor(private http: HttpClient) { }
 
-  url: string = '';
+  url: string = 'https://angular-practice-75c81-default-rtdb.firebaseio.com';
 
   allProducts: any = [];
 
