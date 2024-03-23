@@ -13,6 +13,8 @@ export class AppComponent {
 
   url: string = '';
 
+  allProducts: any = []
+
   ngOnInit() {
     this.url = environment.apiUrl;
   }
@@ -28,7 +30,6 @@ export class AppComponent {
     // console.log(this.addProductForm.value);
   }
 
-
   addNewProduct() {
     let product = this.addProductForm.value;
 
@@ -40,5 +41,4 @@ export class AppComponent {
       alert('Something went wrong!')
     })
   }
-
 }

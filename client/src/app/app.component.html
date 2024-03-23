@@ -24,3 +24,24 @@
   <br /><br />
   <button type="submit">Add Product</button>
 </form>
+
+<table>
+  <thead>
+    <tr>
+      <th>Product Name</th>
+      <th>Discription</th>
+      <th>Price</th>
+      <th>Update</th>
+      <th>Delete</th>
+    </tr>
+  </thead>
+  <tbody *ngFor="let product of allProducts">
+    <tr>
+      <td>{{ product.productName }}</td>
+      <td>{{ product.discription }}</td>
+      <td>{{ product.price }}</td>
+      <td><button>Update</button></td>
+      <td><button>Delete</button></td>
+    </tr>
+  </tbody>
+</table>
