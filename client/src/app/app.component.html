@@ -41,7 +41,7 @@
       <td>{{ product.discription }}</td>
       <td>{{ product.price }}</td>
       <td><button>Update</button></td>
-      <td><button>Delete</button></td>
+      <td><button (click)="handleDelete(product._id)">Delete</button></td>
     </tr>
   </tbody>
 </table>

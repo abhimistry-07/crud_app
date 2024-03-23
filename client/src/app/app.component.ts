@@ -54,4 +54,13 @@ export class AppComponent {
       // console.log(this.allProducts);
     })
   }
+
+  handleDelete(id: any) {
+    this.http.delete<any>(`${this.url}/evaluation/${id}.json`).subscribe(() => {
+      alert('Product deleted successfully.')
+      this.fetchProducts();
+    }, (error) => {
+      alert('Something went wrong!')
+    })
+  }
 }
